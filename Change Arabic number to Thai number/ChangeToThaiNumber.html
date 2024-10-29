@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Change Arabic number to Thai number</title>
+        <script>
+            // สร้างตัวแปร thaiNumber เพื่อเก็บเลขไทย
+            var thaiNumber = ["๐","๑","๒","๓","๔","๕","๖","๗","๘","๙"];
+        
+            // ฟังก์ชันที่ใช้ในการแปลงเลขอารบิกเป็นเลขไทย
+            function convertNumberToThai(){
+                // รับข้อความต้นฉบับจาก textarea
+                var originalText = document.getElementById("original").value;
+                var i = 0;
+                // วนลูปผ่านเลขอารบิกแต่ละตัวและแทนที่ด้วยเลขไทยที่เก็บไว้ในตัวแปร thaiNumber
+                thaiNumber.forEach(element => {
+                    originalText = originalText.replace(new RegExp(i, 'g'), element);
+                    i++;
+                });
+                // แสดงข้อความที่แปลงแล้วใน textarea ที่มี id เป็น "converted"
+                document.getElementById("converted").value = originalText;
+            }
+        </script>
+        
+        <style>
+            body {
+                background-color: #ffffff; /* สีพื้นหลัง */
+                font-family: Arial, sans-serif; /* แบบอักษร */
+            }
+        
+            h1 {
+                font-size: 40px; /* ขนาดตัวอักษร */
+                color: #333; /* สีข้อความ */
+            }
+        
+            textarea {
+                font-size: 16px; /* ขนาดตัวอักษร */
+                width: 650px; /* กำหนดความกว้างของ textarea */
+                height: 550px; /* กำหนดความสูงของ textarea */
+                padding: 10px; /* การเพิ่มเว้นวรรคของข้อความใน textarea */
+                border: 1px solid #ccc; /* เส้นขอบของ textarea */
+                border-radius: 5px; /* มุมของ textarea */
+                margin: 10px; /* ระยะห่างระหว่าง textarea */
+            }
+        
+            #original {
+                background-color: #a7c8ee; /* สีพื้นหลังของ textarea สำหรับเลขอารบิก */
+            }
+        
+            #converted {
+                background-color: #fec3c3; /* สีพื้นหลังของ textarea สำหรับเลขไทย */
+            }
+        </style>        
+    </head>
+    <body>
+        <center>
+            <h1>แปลงเลขอารบิกเป็นเลขไทย</h1>
+            <textarea id = "original" oninput = "convertNumberToThai()" rows = "30" cols = "50"></textarea>
+            <textarea id = "converted" disabled rows = "30" cols = "50"></textarea>
+        </center>
+    </body>
+</html>

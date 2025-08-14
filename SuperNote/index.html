@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Note</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="toolbar">
+    <button id="deleteNoteBtn" title="ลบโน๊ต">🗑️ลบโน๊ต</button>
+    <button id="clearDrawBtn" title="ล้างภาพวาด">✏️ล้างภาพวาด</button>
+    <button id="clearTextBtn" title="ล้างข้อความ">📝ล้างข้อความ</button>
+
+    <div style="border-left: 1px solid #ddd; height: 25px; margin: 0 10px;"></div>
+
+    <select id="fontFamily">
+        <option value="Segoe UI">Segoe UI</option>
+        <option value="Arial">Arial</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Courier New">Courier New</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Verdana">Verdana</option>
+        <option value="Tahoma">Tahoma</option>
+    </select>
+    
+    <select id="fontSize">
+        <option value="12">12px</option>
+        <option value="14">14px</option>
+        <option value="16" selected>16px</option>
+        <option value="18">18px</option>
+        <option value="20">20px</option>
+        <option value="24">24px</option>
+        <option value="28">28px</option>
+        <option value="32">32px</option>
+        <option value="36">36px</option>
+        <option value="48">48px</option>
+        <option value="72">72px</option>
+    </select>
+    
+    <button id="boldBtn" title="ตัวหนา"><b>B</b></button>
+    <button id="italicBtn" title="ตัวเอียง"><i>I</i></button>
+    <button id="underlineBtn" title="ขีดเส้นใต้"><u>U</u></button>
+    <button id="strikeBtn" title="ขีดเส้นทับ"><s>S</s></button>
+    
+    <div style="border-left: 1px solid #ddd; height: 25px; margin: 0 10px;"></div>
+    
+    <button id="drawBtn" title="วาดเขียน">🎨</button>
+    
+    <button id="eraseBtn" title="ยางลบ" style="display: none;">🧽</button>
+    <input type="color" id="drawColor" value="#000000" style="display: none;" title="สีปากกา">
+    <input type="range" id="brushSize" min="1" max="20" value="2" style="display: none;" title="ขนาดปากกา">
+    <select id="lineStyle" style="display: none;" title="ลายเส้น">
+        <option value="solid">เส้นทึบ</option>
+        <option value="dashed">เส้นประ</option>
+        <option value="dotted">เส้นจุด</option>
+        <option value="dash-dot">เส้นประจุด</option>
+    </select>
+</div>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>โน๊ตของฉัน</h2>
+                <button class="new-note-btn" onclick="createNewNote()">+ โน๊ตใหม่</button>
+            </div>
+            <div class="notes-list" id="notesList">
+                <!-- Notes will be dynamically added here -->
+            </div>
+        </div>
+
+        <div class="note-editor">
+            <div class="editor-header">
+                <input type="text" class="note-title-input" id="noteTitle" placeholder="หัวข้อโน๊ต..." onInput="updateNoteTitle()">
+            </div>
+            <div class="editor-content" id="editorContent">
+                <div class="background-overlay" id="backgroundOverlay"></div>
+                <canvas class="drawing-canvas" id="drawingCanvas"></canvas>
+                <textarea class="note-content" id="noteContent" placeholder="เริ่มเขียนโน๊ตของคุณที่นี่..." onInput="updateNoteContent()"></textarea>
+                <div class="empty-state" id="emptyState">เลือกโน๊ตหรือสร้างโน๊ตใหม่เพื่อเริ่มต้น</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="color-palette">
+        <span>พื้นหลัง:</span>
+        <div class="color-option active" style="background: white; border: 1px solid #ddd;" onclick="setBackgroundColor('#ffffff')" data-color="#ffffff"></div>
+        <div class="color-option" style="background: #ffecb3;" onclick="setBackgroundColor('#ffecb3')" data-color="#ffecb3"></div>
+        <div class="color-option" style="background: #f8bbd9;" onclick="setBackgroundColor('#f8bbd9')" data-color="#f8bbd9"></div>
+        <div class="color-option" style="background: #e1f5fe;" onclick="setBackgroundColor('#e1f5fe')" data-color="#e1f5fe"></div>
+        <div class="color-option" style="background: #f3e5f5;" onclick="setBackgroundColor('#f3e5f5')" data-color="#f3e5f5"></div>
+        <div class="color-option" style="background: #e8f5e8;" onclick="setBackgroundColor('#e8f5e8')" data-color="#e8f5e8"></div>
+        <div class="color-option" style="background: #fff3e0;" onclick="setBackgroundColor('#fff3e0')" data-color="#fff3e0"></div>
+        <div class="color-option" style="background: #ffa3a3;" onclick="setBackgroundColor('#ffa3a3')" data-color="#ffa3a3"></div>
+        <div class="color-option" style="background: #7ab5fd;" onclick="setBackgroundColor('#7ab5fd')" data-color="#7ab5fd"></div>
+        
+        <div style="border-left: 1px solid #ddd; height: 30px; margin: 0 10px;"></div>
+        
+        <button class="upload-btn" onclick="document.getElementById('bgImageInput').click()">เปลี่ยนภาพพื้นหลัง</button>
+        <input type="file" id="bgImageInput" accept="image/*" onchange="setBackgroundImage(event)">
+        <button class="upload-btn" onclick="removeBackgroundImage()">ลบภาพพื้นหลัง</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

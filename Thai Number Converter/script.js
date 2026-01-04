@@ -63,7 +63,7 @@ function copyToClipboard() {
 
     // ใช้ Clipboard API (วิธีสมัยใหม่)
     navigator.clipboard.writeText(textToCopy).then(function() {
-        // เปลี่ยนข้อความปุ่มชั่วคราวเพื่อให้รู้ว่า copy แล้ว
+        // เปลี่ยนข้อความปุ่มชั่วคราวเพื่อให้รู้ว่าทำการ copy แล้ว
         var btn = document.querySelector(".copy-btn");
         var originalText = btn.innerHTML;
         

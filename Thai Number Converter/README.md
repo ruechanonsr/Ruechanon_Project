@@ -1,6 +1,6 @@
-# Thai Number Converter (Web Application) | โปรแกรมแปลงเลขไทย-อารบิก
+# Thai Number Converter (Web Application) | แปลงเลขไทย-อารบิก
 
-A lightweight, web-based utility designed to facilitate the bi-directional conversion between **Western Arabic numerals (0-9)** and **Thai numerals (๐-๙)**. This tool is developed to streamline document preparation, particularly for official Thai government documents or formal correspondence.
+A lightweight, web-based utility designed to facilitate the bi-directional conversion between Western Arabic numerals (0-9) and Thai numerals (๐-๙). This tool is developed to streamline document preparation, particularly for official Thai government documents or formal correspondence.
 
 เว็บแอปพลิเคชันสำหรับอำนวยความสะดวกในการแปลงตัวเลขระหว่างเลขอารบิก (0-9) และ เลขไทย (๐-๙) แบบไป-กลับ เครื่องมือนี้ถูกพัฒนาขึ้นเพื่อช่วยลดขั้นตอนในการจัดเตรียมเอกสาร โดยเฉพาะเอกสารราชการไทยหรือหนังสือที่เป็นทางการที่จำเป็นต้องใช้เลขไทย
 

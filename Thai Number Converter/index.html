@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thai Number Converter</title>
+    <script src="script.js"></script>
+    
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Sarabun', Arial, sans-serif; /* เพิ่ม Sarabun เผื่อมี */
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .main-wrapper {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* แถวสำหรับชื่อและปุ่ม Copy */
+        .label-row {
+            width: 650px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: -5px;
+        }
+
+        .label-text {
+            font-weight: bold;
+            font-size: 18px;
+            color: #555;
+        }
+
+        textarea {
+            font-size: 28px;
+            width: 650px;
+            height: 180px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            resize: none;
+            outline: none;
+        }
+        
+        textarea:focus {
+            border-color: #4a90e2;
+        }
+
+        /* ปุ่มสลับภาษา */
+        .swap-btn {
+            background-color: #fff;
+            border: 1px solid #dadce0;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #5f6368;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 5px 0;
+        }
+
+        .swap-btn:hover {
+            background-color: #f1f3f4;
+            transform: rotate(180deg);
+        }
+
+        /* ปุ่ม Copy */
+        .copy-btn {
+            background-color: #eee;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            color: #333;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .copy-btn:hover {
+            background-color: #ddd;
+        }
+
+        .copy-btn:active {
+            background-color: #ccc;
+        }
+
+        /* สีพื้นหลังกล่อง */
+        #inputBox { background-color: #f0f7ff; }
+        #outputBox { background-color: #fff0f0; }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <h1 id="mainTitle">แปลงเลขอารบิกเป็นเลขไทย</h1>
+
+        <div class="container">
+            
+            <div class="label-row">
+                <span id="labelLeft" class="label-text">เลขอารบิก (Arabic)</span>
+            </div>
+            <textarea id="inputBox" oninput="convertNumber()" placeholder="Type Here..."></textarea>
+            
+            <button class="swap-btn" onclick="swapMode()" title="สลับโหมด">⇄</button>
+            
+            <div class="label-row">
+                <span id="labelRight" class="label-text">เลขไทย (Thai)</span>
+                <button class="copy-btn" onclick="copyToClipboard()">
+                    <span>📄</span> คัดลอก
+                </button>
+            </div>
+            <textarea id="outputBox" disabled placeholder="Result..."></textarea>
+            
+        </div>
+    </div>
+
+</body>
+</html>
